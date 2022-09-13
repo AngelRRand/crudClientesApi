@@ -43,6 +43,7 @@ export default function App() {
             name='inicio'
             component={Inicio}
             options={({navigation,route})=>({
+              headerTitleAlign:'center',
               headerLeft: (props)=> <Barra {...props} navigation={navigation} route={route}/>
             })}
           />
