@@ -21,14 +21,17 @@ export default function App() {
           <Stack.Screen
             name='NuevoCliente'
             component={NuevoCliente}
+            options={{
+              title: 'Nuevo Cliente'
+            }}
           />
-
           <Stack.Screen
             name='DetallesCliente'
             component={DetallesCliente}
+            options={{
+              title: 'Nuevo Cliente'
+            }}
           />
-
-
         </Stack.Navigator>
       </NavigationContainer>
     </>
