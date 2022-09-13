@@ -13,8 +13,10 @@ const NuevoCliente = () => {
   const [empresa, setEmpresa] = useState('');
   
   const guardarCliente = ()=>{
-    //Validar
-
+    //Validar 
+    if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
+      return;
+    }
     //Generar el cliente
 
     //guardar el cliente en la API
