@@ -22,7 +22,8 @@ const Inicio = () => {
 
   return (
     <View>
-      <Headline style={globalStyles.titulo}>Clientes</Headline>
+      <Headline style={globalStyles.titulo}>{clientes.length === 0 ? "Aun no hay clientes" : "Clientes"}</Headline>
+      
       <FlatList
         data={clientes}
         keyExtractor={client => (client.id).toString()}
