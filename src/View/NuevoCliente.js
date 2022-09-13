@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { View } from 'react-native'
-import { TextInput, Headline, Button } from 'react-native-paper'
+import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
 import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
@@ -11,6 +11,7 @@ const NuevoCliente = () => {
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
+  const [alert, setAlert] = useState(false);
   
   const guardarCliente = ()=>{
     //Validar 
@@ -61,6 +62,18 @@ const NuevoCliente = () => {
         <Ionicons name="ios-add" size={24} color="white" />
         Guardar Cliente
       </Button>
+
+      <Portal>
+        <Dialog
+          visible={alert}
+        >
+          <Dialog.Title>Error</Dialog.Title>
+          <Dialog.Content>
+            <Paragraph>Todos los espacios oson obligatorios</Paragraph>
+          </Dialog.Content>
+        </Dialog>
+      </Portal>
+
 
     </View>
   )
