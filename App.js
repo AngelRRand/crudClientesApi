@@ -11,10 +11,16 @@ import Inicio from './src/View/Inicio';
 import NuevoCliente from './src/View/NuevoCliente';
 
 const Stack = createNativeStackNavigator();
+
+const theme = {
+  ...DefaultTheme,
+  colors:{
+    ...DefaultTheme.colors,
+    primary: '#f2a217'
+  }
+}
+console.log(theme)
 export default function App() {
-
-
-  
 
 
 
@@ -23,6 +29,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName='Inicio'
+          screenOptions={{
+            headerStyle:{
+              backgroundColor: theme.colors.primary
+            }
+          }}
+
         >
           <Stack.Screen
             name='inicio'
