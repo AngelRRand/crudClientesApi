@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 const theme = {
   ...DefaultTheme,
-  colors:{
+  colors: {
     ...DefaultTheme.colors,
     primary: '#f2a217'
   }
@@ -26,44 +26,46 @@ const theme = {
 console.log(theme)
 export default function App() {
 
-  
+
 
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName='Inicio'
-          screenOptions={{
-            headerStyle:{
-              backgroundColor: theme.colors.primary
-            }
-          }}
+      <PaperProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName='Inicio'
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: theme.colors.primary
+              }
+            }}
 
-        >
-          <Stack.Screen
-            name='inicio'
-            component={Inicio}
-            options={({navigation,route})=>({
-              headerTitleAlign:'center',
-              headerLeft: (props)=> <Barra {...props} navigation={navigation} route={route}/>
-            })}
-          />
-          <Stack.Screen
-            name='NuevoCliente'
-            component={NuevoCliente}
-            options={{
-              title: 'Nuevo Cliente'
-            }}
-          />
-          <Stack.Screen
-            name='DetallesCliente'
-            component={DetallesCliente}
-            options={{
-              title: 'Nuevo Cliente'
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name='inicio'
+              component={Inicio}
+              options={({ navigation, route }) => ({
+                headerTitleAlign: 'center',
+                headerLeft: (props) => <Barra {...props} navigation={navigation} route={route} />
+              })}
+            />
+            <Stack.Screen
+              name='NuevoCliente'
+              component={NuevoCliente}
+              options={{
+                title: 'Nuevo Cliente'
+              }}
+            />
+            <Stack.Screen
+              name='DetallesCliente'
+              component={DetallesCliente}
+              options={{
+                title: 'Nuevo Cliente'
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </>
   );
 }

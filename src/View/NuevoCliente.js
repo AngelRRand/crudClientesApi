@@ -16,10 +16,11 @@ const NuevoCliente = () => {
   const guardarCliente = ()=>{
     //Validar 
     if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
+      setAlert(true)
       return;
     }
     //Generar el cliente
-
+    const cliente = {nombre, telefono, correo, empresa}
     //guardar el cliente en la API
 
     //Redireccionar
@@ -66,11 +67,15 @@ const NuevoCliente = () => {
       <Portal>
         <Dialog
           visible={alert}
+          onDismiss={()=>setAlert(false)}
         >
           <Dialog.Title>Error</Dialog.Title>
           <Dialog.Content>
-            <Paragraph>Todos los espacios oson obligatorios</Paragraph>
+            <Paragraph>Todos los espacios son obligatorios</Paragraph>
           </Dialog.Content>
+          <Dialog.Actions>
+            <Button onPress={()=>setAlert(false)}>OK</Button>
+          </Dialog.Actions>
         </Dialog>
       </Portal>
 
