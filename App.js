@@ -23,7 +23,7 @@ const theme = {
     primary: '#f2a217'
   }
 }
-console.log(theme)
+//console.log(theme)
 export default function App() {
 
 

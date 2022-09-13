@@ -4,16 +4,20 @@ import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-na
 import { Ionicons } from '@expo/vector-icons';
 import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
+import axios from 'axios';
 
-const NuevoCliente = () => {
+const NuevoCliente = ({navigation, route}) => {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
   const [alert, setAlert] = useState(false);
-  
-  const guardarCliente = ()=>{
+
+  const regresar = () => {
+    navigation.navigate('Inicio')
+}
+  const guardarCliente = async()=>{
     //Validar 
     if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
       setAlert(true)
@@ -21,40 +25,51 @@ const NuevoCliente = () => {
     }
     //Generar el cliente
     const cliente = {nombre, telefono, correo, empresa}
+    console.log(cliente, 'hola buenas ')
     //guardar el cliente en la API
-
+    try {
+      await axios.post('  http://192.168.1.76:3000/clientes', cliente)
+    } catch (error) {
+      console.log(error)
+    }
     //Redireccionar
-
+    regresar()
     //Limpiar states
+    setNombre('')
+    setTelefono('')
+    setCorreo('')
+    setEmpresa('')
+    setAlert('')
   }
+
   return (
     <View style={globalStyles.contenedor}>
       <Headline style={globalStyles.titulo}>Añadir Nuevo Cliente</Headline>
       <TextInput
         label='Nombre'
         placeholder='Horacio'
-        onChange={texto=>setNombre(texto)}
+        onChangeText={texto=>setNombre(texto)}
         value={nombre}
         style={styles.input}
       />
       <TextInput
         label='Telefono'
         placeholder='3516506025'
-        onChange={texto=>setTelefono(texto)}
+        onChangeText={texto=>setTelefono(texto)}
         value={telefono}
         style={styles.input}
       />
       <TextInput
         label='Correo'
         placeholder='Hola@gmail.com'
-        onChange={texto=>setCorreo(texto)}
+        onChangeText={texto=>setCorreo(texto)}
         value={correo}
         style={styles.input}
       />
       <TextInput
         label='Empresa'
         placeholder='Horacio.inc'
-        onChange={texto=>setEmpresa(texto)}
+        onChangeText={texto=>setEmpresa(texto)}
         value={empresa}
         style={styles.input}
       />
