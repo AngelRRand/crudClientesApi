@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { View } from 'react-native'
 import { TextInput, Headline, Button } from 'react-native-paper'
+import { Ionicons } from '@expo/vector-icons';
 import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
 
@@ -11,6 +12,17 @@ const NuevoCliente = () => {
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
   
+  const guardarCliente = ()=>{
+    //Validar
+
+    //Generar el cliente
+
+    //guardar el cliente en la API
+
+    //Redireccionar
+
+    //Limpiar states
+  }
   return (
     <View style={globalStyles.contenedor}>
       <Headline style={globalStyles.titulo}>Añadir Nuevo Cliente</Headline>
@@ -42,6 +54,11 @@ const NuevoCliente = () => {
         value={empresa}
         style={styles.input}
       />
+
+      <Button mode='contained' onPress={()=> guardarCliente()}>
+        <Ionicons name="ios-add" size={24} color="white" />
+        Guardar Cliente
+      </Button>
 
     </View>
   )
