@@ -6,7 +6,7 @@ import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
 import axios from 'axios';
 
-const NuevoCliente = ({navigation, route}) => {
+const NuevoCliente = ({navigation}) => {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -15,7 +15,7 @@ const NuevoCliente = ({navigation, route}) => {
   const [alert, setAlert] = useState(false);
 
   const regresar = () => {
-    navigation.navigate('Inicio')
+    navigation.navigate('inicio')
 }
   const guardarCliente = async()=>{
     //Validar 
@@ -28,7 +28,7 @@ const NuevoCliente = ({navigation, route}) => {
     console.log(cliente, 'hola buenas ')
     //guardar el cliente en la API
     try {
-      await axios.post('  http://192.168.1.76:3000/clientes', cliente)
+      await axios.post('http://192.168.1.6:3000/clientes', cliente)
     } catch (error) {
       console.log(error)
     }

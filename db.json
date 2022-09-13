@@ -6,6 +6,20 @@
       "correo": "J@gmail.com",
       "empresa": "Lacasita",
       "id": 1
+    },
+    {
+      "nombre": "Raul",
+      "telefono": "666677",
+      "correo": "Hnii@hotmail.com",
+      "empresa": "GatosInc",
+      "id": 2
+    },
+    {
+      "nombre": "Michii",
+      "telefono": "777",
+      "correo": "froslaik@hotmail.com",
+      "empresa": "RaulInc",
+      "id": 3
     }
   ]
 }
