@@ -15,6 +15,7 @@ const Inicio = ({navigation}) => {
       try {
         const res = await axios.get('http://192.168.1.6:3000/clientes')
         setClientes(res.data)
+        setConsultarAPI(false)
       } catch (error) {
         console.log((error))
       }

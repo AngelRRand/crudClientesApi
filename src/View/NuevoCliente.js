@@ -8,6 +8,7 @@ import axios from 'axios';
 
 const NuevoCliente = ({navigation, route}) => {
 
+  const {setConsultarAPI} = route.params;
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
@@ -40,6 +41,8 @@ const NuevoCliente = ({navigation, route}) => {
     setCorreo('')
     setEmpresa('')
     setAlert('')
+    //Cambiar a true el cliente
+    setConsultarAPI(true)
   }
 
   return (
