@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { View } from 'react-native'
 import { TextInput, Headline, Button, Paragraph, Dialog, Portal } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
@@ -6,26 +6,38 @@ import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
 import axios from 'axios';
 
-const NuevoCliente = ({navigation, route}) => {
+const NuevoCliente = ({ navigation, route }) => {
 
-  const {setConsultarAPI} = route.params;
+  const { cliente } = route.params;
+  const { setConsultarAPI } = route.params;
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
   const [alert, setAlert] = useState(false);
 
+  //Detectar si existe un cliente
+  useEffect(() => {
+    if (cliente) {
+      const { nombre, telefono, correo, empresa } = cliente
+      setNombre(nombre)
+      setTelefono(telefono)
+      setCorreo(correo)
+      setEmpresa(empresa)
+    } 
+  }, []);
+
   const regresar = () => {
     navigation.navigate('inicio')
-}
-  const guardarCliente = async()=>{
+  }
+  const guardarCliente = async () => {
     //Validar 
-    if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
+    if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
       setAlert(true)
       return;
     }
     //Generar el cliente
-    const cliente = {nombre, telefono, correo, empresa}
+    const cliente = { nombre, telefono, correo, empresa }
     console.log(cliente, 'hola buenas ')
     //guardar el cliente en la API
     try {
@@ -51,33 +63,33 @@ const NuevoCliente = ({navigation, route}) => {
       <TextInput
         label='Nombre'
         placeholder='Horacio'
-        onChangeText={texto=>setNombre(texto)}
+        onChangeText={texto => setNombre(texto)}
         value={nombre}
         style={styles.input}
       />
       <TextInput
         label='Telefono'
         placeholder='3516506025'
-        onChangeText={texto=>setTelefono(texto)}
+        onChangeText={texto => setTelefono(texto)}
         value={telefono}
         style={styles.input}
       />
       <TextInput
         label='Correo'
         placeholder='Hola@gmail.com'
-        onChangeText={texto=>setCorreo(texto)}
+        onChangeText={texto => setCorreo(texto)}
         value={correo}
         style={styles.input}
       />
       <TextInput
         label='Empresa'
         placeholder='Horacio.inc'
-        onChangeText={texto=>setEmpresa(texto)}
+        onChangeText={texto => setEmpresa(texto)}
         value={empresa}
         style={styles.input}
       />
 
-      <Button mode='contained' onPress={()=> guardarCliente()}>
+      <Button mode='contained' onPress={() => guardarCliente()}>
         <Ionicons name="ios-add" size={24} color="white" />
         Guardar Cliente
       </Button>
@@ -85,14 +97,14 @@ const NuevoCliente = ({navigation, route}) => {
       <Portal>
         <Dialog
           visible={alert}
-          onDismiss={()=>setAlert(false)}
+          onDismiss={() => setAlert(false)}
         >
           <Dialog.Title>Error</Dialog.Title>
           <Dialog.Content>
             <Paragraph>Todos los espacios son obligatorios</Paragraph>
           </Dialog.Content>
           <Dialog.Actions>
-            <Button onPress={()=>setAlert(false)}>OK</Button>
+            <Button onPress={() => setAlert(false)}>OK</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>
