@@ -28,10 +28,7 @@ const Inicio = ({ navigation }) => {
   return (
     <View>
       <Headline style={globalStyles.titulo}>{clientes.length === 0 ? "Aun no hay clientes" : "Clientes"}</Headline>
-      <Button onPress={() => navigation.navigate('NuevoCliente', { setConsultarAPI })}>
-        <Ionicons name="ios-add" size={24} color="white" />
-        Nuevo cliente
-      </Button>
+      
       <FlatList
         data={clientes}
         keyExtractor={client => (client.id).toString()}

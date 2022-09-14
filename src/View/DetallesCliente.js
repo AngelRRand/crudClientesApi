@@ -45,7 +45,9 @@ const DetallesCliente = ({ navigation, route }) => {
       >
         Eliminar
       </Button>
-      <View style={globalStyles.fab}>
+      <View 
+      style={globalStyles.fab} 
+      onPress={() => navigation.navigate('NuevoCliente', { cliente:route.params.item, setConsultarAPI })}>
         <Ionicons name="brush-sharp" size={24} color="black" />
       </View>
     </View>
