@@ -45,6 +45,9 @@ const DetallesCliente = ({navigation,route}) => {
         >
         Eliminar
       </Button>
+      <View style={globalStyles.fab}>
+        <Ionicons name="ios-add-outline" size={24} color="black" />
+      </View>
     </View>
   )
 }
