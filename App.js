@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import DetallesCliente from './src/View/DetallesCliente';
 import Inicio from './src/View/Inicio';
 import NuevoCliente from './src/View/NuevoCliente';
