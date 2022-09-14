@@ -40,7 +40,7 @@ const Inicio = ({ navigation }) => {
             title={item.nombre}
             description={item.empresa}
             onPress={()=>{
-              navigation.navigate('DetallesCliente', { setConsultarAPI })
+              navigation.navigate('DetallesCliente', { item })
             }}
           />
         )}

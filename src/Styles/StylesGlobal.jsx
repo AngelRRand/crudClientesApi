@@ -17,6 +17,10 @@ const globalStyles = StyleSheet.create({
         margin: 20,
         bottom: 0,
         right: 20,
+    },
+    text:{
+        marginBottom:20,
+        fontSize:18
     }
 });
 
