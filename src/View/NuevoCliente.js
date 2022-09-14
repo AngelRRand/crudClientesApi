@@ -38,13 +38,27 @@ const NuevoCliente = ({ navigation, route }) => {
     }
     //Generar el cliente
     const cliente = { nombre, telefono, correo, empresa }
-    console.log(cliente, 'hola buenas ')
-    //guardar el cliente en la API
+    
+    //Si estamos editando o creando
+    if(cliente){
+      const {id} =cliente
+      cliente.id = id;
+      const url = `http://192.168.1.6:3000/clientes/${id}`
+      try {
+        await axios.put(url, cliente)
+      } catch (error) {
+        
+      }
+    } else{
+      //guardar el cliente en la API
     try {
       await axios.post('http://192.168.1.6:3000/clientes', cliente)
     } catch (error) {
       console.log(error)
     }
+    }
+
+
     //Redireccionar
     regresar()
     //Limpiar states
