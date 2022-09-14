@@ -21,6 +21,11 @@ const globalStyles = StyleSheet.create({
     text:{
         marginBottom:20,
         fontSize:18
+    }, 
+    eliminar:{
+        marginBottom:30,
+        backgroundColor:'red',
+        color: 'white'
     }
 });
 

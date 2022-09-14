@@ -13,7 +13,7 @@ const DetallesCliente = ({route}) => {
       <Text style={globalStyles.text}>Telefono: {telefono}</Text>
       <Text style={globalStyles.text}>Correo: {correo}</Text>
 
-      <Button>
+      <Button style={globalStyles.eliminar} mode='contained' >
         Eliminar
       </Button>
     </View>
