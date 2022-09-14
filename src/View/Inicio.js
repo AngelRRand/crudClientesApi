@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, FlatList } from 'react-native'
-import { List, Headline , Button} from 'react-native-paper';
+import { List, Headline, Button } from 'react-native-paper';
 import globalStyles from '../Styles/StylesGlobal';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
-const Inicio = () => {
+const Inicio = ({navigation}) => {
 
   const [clientes, setClientes] = useState([]);
   const [consultarAPI, setConsultarAPI] = useState(true);
@@ -19,7 +19,7 @@ const Inicio = () => {
         console.log((error))
       }
     }
-    if(consultarAPI){
+    if (consultarAPI) {
       cargarClientes()
     }
   }, [consultarAPI]);
@@ -27,7 +27,8 @@ const Inicio = () => {
   return (
     <View>
       <Headline style={globalStyles.titulo}>{clientes.length === 0 ? "Aun no hay clientes" : "Clientes"}</Headline>
-      <Button>
+      <Button onPress={()=>navigation.navigate('NuevoCliente', {setConsultarAPI}) }>
+        <Ionicons name="ios-add" size={24} color="white" />
         Nuevo cliente
       </Button>
       <FlatList

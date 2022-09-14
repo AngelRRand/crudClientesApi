@@ -6,7 +6,7 @@ import globalStyles from '../Styles/StylesGlobal'
 import styles from '../Styles/StylesNuevo'
 import axios from 'axios';
 
-const NuevoCliente = ({navigation}) => {
+const NuevoCliente = ({navigation, route}) => {
 
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
