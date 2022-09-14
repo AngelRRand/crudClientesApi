@@ -24,7 +24,7 @@ const NuevoCliente = ({ navigation, route }) => {
       setTelefono(telefono)
       setCorreo(correo)
       setEmpresa(empresa)
-    } 
+    }
   }, []);
 
   const regresar = () => {
@@ -38,24 +38,24 @@ const NuevoCliente = ({ navigation, route }) => {
     }
     //Generar el cliente
     const cliente = { nombre, telefono, correo, empresa }
-    
+
     //Si estamos editando o creando
-    if(cliente){
-      const {id} =cliente
+    if (cliente) {
+      const { id } = cliente
       cliente.id = id;
       const url = `http://192.168.1.6:3000/clientes/${id}`
       try {
         await axios.put(url, cliente)
       } catch (error) {
-        
+
       }
-    } else{
+    } else {
       //guardar el cliente en la API
-    try {
-      await axios.post('http://192.168.1.6:3000/clientes', cliente)
-    } catch (error) {
-      console.log(error)
-    }
+      try {
+        await axios.post('http://192.168.1.6:3000/clientes', cliente)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
 
