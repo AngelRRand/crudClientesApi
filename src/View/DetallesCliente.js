@@ -4,7 +4,7 @@ import { Headline, Text, Button } from 'react-native-paper';
 import globalStyles from '../Styles/StylesGlobal';
 import axios from 'axios';
 const DetallesCliente = ({navigation,route}) => {
-
+  const {setConsultarAPI} = route.params
   const {nombre, empresa, telefono, correo, id} = route.params;
 
   const mostrarConfirmacion = () =>{
@@ -27,6 +27,8 @@ const DetallesCliente = ({navigation,route}) => {
     }
     //Redireccionar
     navigation.navigate('inicio')
+    //Reiniciando la consulta
+    setConsultarAPI(true)
   }
 
   return (
