@@ -5,7 +5,7 @@ import globalStyles from '../Styles/StylesGlobal';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
-const Inicio = ({navigation}) => {
+const Inicio = ({ navigation }) => {
 
   const [clientes, setClientes] = useState([]);
   const [consultarAPI, setConsultarAPI] = useState(true);
@@ -28,7 +28,7 @@ const Inicio = ({navigation}) => {
   return (
     <View>
       <Headline style={globalStyles.titulo}>{clientes.length === 0 ? "Aun no hay clientes" : "Clientes"}</Headline>
-      <Button onPress={()=>navigation.navigate('NuevoCliente', {setConsultarAPI}) }>
+      <Button onPress={() => navigation.navigate('NuevoCliente', { setConsultarAPI })}>
         <Ionicons name="ios-add" size={24} color="white" />
         Nuevo cliente
       </Button>
@@ -42,6 +42,9 @@ const Inicio = ({navigation}) => {
           />
         )}
       />
+      <View>
+        <Ionicons name="ios-add-outline" size={24} color="black" />
+      </View>
     </View>
   )
 
