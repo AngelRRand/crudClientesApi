@@ -3,22 +3,22 @@ import { Alert, View } from 'react-native'
 import { Headline, Text, Button } from 'react-native-paper';
 import globalStyles from '../Styles/StylesGlobal';
 import axios from 'axios';
-const DetallesCliente = ({navigation,route}) => {
-  const {setConsultarAPI} = route.params
-  const {nombre, empresa, telefono, correo, id} = route.params;
+const DetallesCliente = ({ navigation, route }) => {
+  const { setConsultarAPI } = route.params
+  const { nombre, empresa, telefono, correo, id } = route.params;
 
-  const mostrarConfirmacion = () =>{
+  const mostrarConfirmacion = () => {
     Alert.alert(
       '¿Deseas eliminar al cliente?',
       'Un contacto eliminado no se puede recuperar',
       [
-        {text:'Si Eliminar', onPress: ()=> eliminarContacto()},
-        {text:'Volver', style:'cancel'}
+        { text: 'Si Eliminar', onPress: () => eliminarContacto() },
+        { text: 'Volver', style: 'cancel' }
       ]
     )
   }
 
-  const eliminarContacto = async()=>{
+  const eliminarContacto = async () => {
     const url = `http://192.168.1.6:3000/clientes/${id}`
     try {
       await axios.delete(url)
@@ -38,15 +38,15 @@ const DetallesCliente = ({navigation,route}) => {
       <Text style={globalStyles.text}>Telefono: {telefono}</Text>
       <Text style={globalStyles.text}>Correo: {correo}</Text>
 
-      <Button 
-        style={globalStyles.eliminar} 
+      <Button
+        style={globalStyles.eliminar}
         mode='contained'
-        onPress={()=>mostrarConfirmacion()}
-        >
+        onPress={() => mostrarConfirmacion()}
+      >
         Eliminar
       </Button>
       <View style={globalStyles.fab}>
-        <Ionicons name="ios-add-outline" size={24} color="black" />
+        <Ionicons name="brush-sharp" size={24} color="black" />
       </View>
     </View>
   )

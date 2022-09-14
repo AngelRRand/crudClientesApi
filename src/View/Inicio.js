@@ -45,7 +45,7 @@ const Inicio = ({ navigation }) => {
           />
         )}
       />
-      <View style={globalStyles.fab}>
+      <View style={globalStyles.fab} onPress={() => navigation.navigate('NuevoCliente', { setConsultarAPI })}>
         <Ionicons name="ios-add-outline" size={24} color="black" />
       </View>
     </View>
