@@ -2,9 +2,10 @@ import React from 'react'
 import { Alert, View } from 'react-native'
 import { Headline, Text, Button } from 'react-native-paper';
 import globalStyles from '../Styles/StylesGlobal';
-const DetallesCliente = ({route}) => {
+import axios from 'axios';
+const DetallesCliente = ({navigation,route}) => {
 
-  const {nombre, empresa, telefono, correo} = route.params;
+  const {nombre, empresa, telefono, correo, id} = route.params;
 
   const mostrarConfirmacion = () =>{
     Alert.alert(
@@ -12,13 +13,20 @@ const DetallesCliente = ({route}) => {
       'Un contacto eliminado no se puede recuperar',
       [
         {text:'Si Eliminar', onPress: ()=> eliminarContacto()},
-        {text:'Volver', onPress: ()=> eliminarContacto()}
+        {text:'Volver', style:'cancel'}
       ]
     )
   }
 
-  const eliminarContacto = ()=>{
-    
+  const eliminarContacto = async()=>{
+    const url = `http://192.168.1.6:3000/clientes/${id}`
+    try {
+      await axios.delete(url)
+    } catch (error) {
+      console.log(error)
+    }
+    //Redireccionar
+    navigation.navigate('inicio')
   }
 
   return (
